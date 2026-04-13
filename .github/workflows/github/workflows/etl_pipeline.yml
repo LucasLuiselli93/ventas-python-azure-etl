@@ -1,0 +1,26 @@
+name: Run Sales ETL
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Se ejecuta todos los días a las 2 AM
+  workflow_dispatch:      # Permite ejecutarlo manualmente desde la web
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # O 'self-hosted' si vas por la opción 1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ETL
+        env:
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        run: python scripts/etl_ventas.py
