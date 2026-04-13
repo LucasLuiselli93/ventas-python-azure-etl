@@ -1,0 +1,10 @@
+# Logs y estados
+*.log
+config/etl_state.json
+
+# Datos (Parquet es pesado y no va en Git)
+*.parquet
+
+# Entorno de python
+__pycache__/
+venv/

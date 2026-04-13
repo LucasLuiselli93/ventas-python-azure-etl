@@ -1,0 +1,27 @@
+services:
+  db_argentina:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ventas
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5433:5432"
+
+  db_brasil:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ventas
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5434:5432"
+
+  db_mexico:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ventas
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5435:5432"
